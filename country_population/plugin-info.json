@@ -1,0 +1,6 @@
+{
+  "display_name": "Country Population",
+  "id": "country_population",
+  "class": "CountryPopulation",
+  "repository": "https://github.com/shadal18/inkypi-country-population-data"
+}
