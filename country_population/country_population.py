@@ -9,13 +9,20 @@ def format_population(value):
         return "N/A"
 
 
-def format_change(value):
+def format_signed_population(value):
+    try:
+        return f"{int(value):+,}"
+    except (TypeError, ValueError):
+        return "N/A"
+
+
+def format_change_percent(value):
     try:
         val = float(value)
         sign = "+" if val > 0 else ""
         return f"{sign}{val:.2f}%"
     except (TypeError, ValueError):
-        return None
+        return "N/A"
 
 
 class CountryPopulation(BasePlugin):
@@ -66,8 +73,10 @@ class CountryPopulation(BasePlugin):
         country_name = (data.get("country_name") or country).title()
 
         population_str = format_population(population)
+
         previous_population = previous.get("population") if previous else None
         previous_year = previous.get("year") if previous else None
+        previous_population_str = format_population(previous_population) if previous_population is not None else "N/A"
 
         delta_value = None
         delta_percent = None
@@ -79,8 +88,8 @@ class CountryPopulation(BasePlugin):
                 delta_value = None
                 delta_percent = None
 
-        delta_str = f"{delta_value:+,}" if delta_value is not None else None
-        delta_percent_str = format_change(delta_percent) if delta_percent is not None else None
+        delta_value_str = format_signed_population(delta_value) if delta_value is not None else "N/A"
+        delta_percent_str = format_change_percent(delta_percent) if delta_percent is not None else "N/A"
 
         width, height = device_config.get_resolution()
         if device_config.get_config("orientation") == "vertical":
@@ -95,8 +104,9 @@ class CountryPopulation(BasePlugin):
                 "country": country_name,
                 "population": population_str,
                 "year": year or "N/A",
-                "previous_year": previous_year,
-                "delta_value": delta_str,
+                "previous_year": previous_year or "N/A",
+                "previous_population": previous_population_str,
+                "delta_value": delta_value_str,
                 "delta_percent": delta_percent_str,
                 "plugin_settings": settings
             }

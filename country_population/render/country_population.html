@@ -24,21 +24,19 @@
 
   <div class="stats-row">
     <div class="stat-card">
-      <div class="stat-label">Reference Year</div>
-      <div class="stat-value">{{ year }}</div>
+      <div class="stat-label">Previous Population</div>
+      <div class="stat-value small">{{ previous_population }}</div>
+      <div class="stat-subtle">Year {{ previous_year }}</div>
     </div>
 
     <div class="stat-card">
-      <div class="stat-label">Previous Year</div>
-      <div class="stat-value">{% if previous_year %} {{ previous_year }} {% else %} N/A {% endif %}</div>
+      <div class="stat-label">Annual Change</div>
+      <div class="stat-value small">{{ delta_value }}</div>
     </div>
 
     <div class="stat-card accent">
-      <div class="stat-label">Annual Change</div>
-      <div class="stat-value">{% if delta_value %} {{ delta_value }} {% else %} N/A {% endif %}</div>
-      {% if delta_percent %}
-      <div class="stat-subvalue">{{ delta_percent }}</div>
-      {% endif %}
+      <div class="stat-label">Annual Change %</div>
+      <div class="stat-value small">{{ delta_percent }}</div>
     </div>
   </div>
 </div>
