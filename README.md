@@ -7,7 +7,7 @@ An InkyPi plugin that shows country population data with a clean layout and conf
 Use the InkyPi plugin installer with the plugin ID and this repository URL, following the install pattern shown by the official InkyPi plugin template.
 
 ```bash
-inkypi plugin install country_population https://github.com/shadal18/inkypi-country-population-data
+inkypi plugin install country_population https://github.com/shadal18/inkypi-country-population
 ```
 
 ## Update
@@ -90,7 +90,7 @@ This endpoint provides historical, current, and projected population statistics 
 
 GitHub repository:
 
-[https://github.com/shadal18/inkypi-country-population-data](https://github.com/shadal18/inkypi-country-population-data)
+[https://github.com/shadal18/inkypi-country-population](https://github.com/shadal18/inkypi-country-population)
 
 ## Screenshots
 
